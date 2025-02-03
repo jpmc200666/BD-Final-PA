@@ -167,130 +167,61 @@ public class VentanaInicioSesion extends JFrame {
 			add(botonVolver);
 		}
 
-		/**
-		 * Obtener la imagen de fondo.
-		 * 
-		 * @return la imagen de fondo.
-		 */
 		public Image getImagenFondo() {
 			return imagenFondo;
 		}
 
-		/**
-		 * Definir la imagen de fondo.
-		 * 
-		 * @param imagenFondo la imagen de fondo a definir.
-		 */
 		public void setImagenFondo(Image imagenFondo) {
 			this.imagenFondo = imagenFondo;
 		}
 
-		/**
-		 * Obtener la etiqueta de usuario.
-		 * 
-		 * @return la etiqueta de usuario.
-		 */
 		public JLabel geteUsuario() {
 			return eUsuario;
 		}
 
-		/**
-		 * Definir la etiqueta de usuario.
-		 * 
-		 * @param eUsuario la etiqueta de usuario a definir.
-		 */
 		public void seteUsuario(JLabel eUsuario) {
 			this.eUsuario = eUsuario;
 		}
 
-		/**
-		 * Obtener la etiqueta de contraseña.
-		 * 
-		 * @return la etiqueta de contraseña.
-		 */
 		public JLabel geteContrasena() {
 			return eContrasena;
 		}
 
-		/**
-		 * Definir la etiqueta de contraseña.
-		 * 
-		 * @param eContrasena la etiqueta de contraseña a definir.
-		 */
 		public void seteContrasena(JLabel eContrasena) {
 			this.eContrasena = eContrasena;
 		}
 
-		/**
-		 * Obtener el campo de texto del usuario.
-		 * 
-		 * @return el campo de texto del usuario.
-		 */
 		public JTextField getCampoUsuario() {
 			return campoUsuario;
 		}
 
-		/**
-		 * Definir el campo de texto del usuario.
-		 * 
-		 * @param campoUsuario el campo de texto del usuario a definir.
-		 */
 		public void setCampoUsuario(JTextField campoUsuario) {
 			this.campoUsuario = campoUsuario;
 		}
 
-		/**
-		 * Obtener el campo de texto de la contraseña.
-		 * 
-		 * @return el campo de texto de la contraseña.
-		 */
 		public JTextField getCampoContrasena() {
 			return campoContrasena;
 		}
 
-		/**
-		 * Definir el campo de texto de la contraseña.
-		 * 
-		 * @param campoContrasena el campo de texto de la contraseña a definir.
-		 */
 		public void setCampoContrasena(JTextField campoContrasena) {
 			this.campoContrasena = campoContrasena;
 		}
 
-		/**
-		 * Obtener el botón de iniciar sesión.
-		 * 
-		 * @return el botón de iniciar sesión.
-		 */
 		public JButton getBotonIniciarSesion() {
 			return botonIniciarSesion;
 		}
 
-		/**
-		 * Definir el botón de iniciar sesión.
-		 * 
-		 * @param botonIniciarSesion el botón de iniciar sesión a definir.
-		 */
 		public void setBotonIniciarSesion(JButton botonIniciarSesion) {
 			this.botonIniciarSesion = botonIniciarSesion;
 		}
 
-		/**
-		 * Obtener el botón de volver.
-		 * 
-		 * @return el botón de volver.
-		 */
 		public JButton getBotonVolver() {
 			return botonVolver;
 		}
 
-		/**
-		 * Definir el botón de volver.
-		 * 
-		 * @param botonVolver el botón de volver a definir.
-		 */
 		public void setBotonVolver(JButton botonVolver) {
 			this.botonVolver = botonVolver;
 		}
+
 	}
 }
