@@ -29,7 +29,7 @@ public class VentanaMenuPizzas extends JFrame {
 
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setVisible(true); // Cambiado a true para que la ventana sea visible al ejecutar
+		setVisible(false); 
 	}
 
 	public void inicializarComponentes() {

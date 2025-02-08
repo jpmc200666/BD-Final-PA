@@ -21,7 +21,7 @@ import javax.swing.JPanel;
  * @author Grupo JAN
  */
 public class VentanaInicioAplicacion extends JFrame {
-	public PanelInicioAplicacion panelInicio;
+	private PanelInicioAplicacion panelInicio;
 
 	public VentanaInicioAplicacion() {
 		setTitle("Inicio de Aplicacion");
@@ -33,7 +33,7 @@ public class VentanaInicioAplicacion extends JFrame {
 
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setVisible(true);
+		setVisible(false);
 	}
 
 	public void inicializarComponentes() {
@@ -52,7 +52,7 @@ public class VentanaInicioAplicacion extends JFrame {
 	/**
 	 * Clase interna que contiene el panel de inicio de sesión.
 	 */
-	public class PanelInicioAplicacion extends JPanel {
+	class PanelInicioAplicacion extends JPanel {
 		private Image imagenFondo;
 		private JButton botonIniciarSesion;
 		private JButton botonRegistrar;
@@ -111,7 +111,7 @@ public class VentanaInicioAplicacion extends JFrame {
 			botonRegistrar.setForeground(Color.black);
 			add(botonRegistrar);
 		}
-		
+
 		public Image getImagenFondo() {
 			return imagenFondo;
 		}

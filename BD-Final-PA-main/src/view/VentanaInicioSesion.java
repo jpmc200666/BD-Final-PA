@@ -68,7 +68,7 @@ public class VentanaInicioSesion extends JFrame {
 	/**
 	 * Clase interna que contiene el panel de inicio de sesión.
 	 */
-	public class PanelInicioSesion extends JPanel {
+	class PanelInicioSesion extends JPanel {
 		private Image imagenFondo;
 		private JLabel eUsuario;
 		private JLabel eContrasena;

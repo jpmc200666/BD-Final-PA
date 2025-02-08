@@ -15,21 +15,20 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 /**
  * Clase que contiene la ventana de registro de usuario.
  * 
  * @author Grupo JAN
  */
-public class VentanaRegistroUsuario extends JFrame {
-	private PanelRegistroUsuario panelRegister;
+public class VentanaRecibo extends JFrame {
+	private PanelRecibo panelRecibo;
 
 	/**
 	 * Constructor con los parámetros de la ventana de registro de usuario.
 	 */
-	public VentanaRegistroUsuario() {
-		setTitle("Registro");
+	public VentanaRecibo() {
+		setTitle("Recibo");
 		setSize(700, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout(10, 10));
@@ -44,8 +43,8 @@ public class VentanaRegistroUsuario extends JFrame {
 	 * Método que inicia la ventana de registro de usuario.
 	 */
 	public void inicializarComponentes() {
-		panelRegister = new PanelRegistroUsuario();
-		add(panelRegister);
+		panelRecibo = new PanelRecibo();
+		add(panelRecibo);
 	}
 
 	/**
@@ -53,38 +52,45 @@ public class VentanaRegistroUsuario extends JFrame {
 	 * 
 	 * @return el panel de registro.
 	 */
-	public PanelRegistroUsuario getPanelRegister() {
-		return panelRegister;
+	public PanelRecibo getPanelRegister() {
+		return panelRecibo;
 	}
 
 	/**
 	 * Definir el panel de registro.
 	 * 
-	 * @param panelRegister el panel de registro a definir.
+	 * @param panelRecibo el panel de registro a definir.
 	 */
-	public void setPanelRegister(PanelRegistroUsuario panelRegister) {
-		this.panelRegister = panelRegister;
+	public void setPanelRecibo(PanelRecibo panelRecibo) {
+		this.panelRecibo = panelRecibo;
 	}
 
 	/**
 	 * Clase interna que contiene el panel de registro de usuario.
 	 */
-	class PanelRegistroUsuario extends JPanel {
+	class PanelRecibo extends JPanel {
 		private Image imagenFondo;
-		private JLabel eContrasena;
+		private JLabel eTotalPagar;
 		private JLabel eNombre;
-		private JTextField campoNombre;
-		private JTextField campoContrasena;
-		private JButton botonRegistrarse;
+		private JLabel ePizzas;
+		private JButton botonCerrar;
 		private JButton botonVolver;
 
 		/**
 		 * Constructor del panel de registro de usuario.
 		 */
-		public PanelRegistroUsuario() {
+		public PanelRecibo() {
 			setLayout(null);
+			cargarImagenFondo();
+			inicializarComponentes();
+			setVisible(true);
+		}
+
+		/**
+		 * Método para cargar la imagen de fondo.
+		 */
+		private void cargarImagenFondo() {
 			try {
-				// Cargar imagen desde el directorio resources del proyecto
 				InputStream is = getClass().getClassLoader().getResourceAsStream("resources/imagenCuadradaAzul.jpg");
 				if (is != null) {
 					imagenFondo = ImageIO.read(is);
@@ -94,9 +100,6 @@ public class VentanaRegistroUsuario extends JFrame {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
-			inicializarComponentes();
-			setVisible(true);
 		}
 
 		/**
@@ -112,31 +115,20 @@ public class VentanaRegistroUsuario extends JFrame {
 
 			// Dibujar la imagen con transparencia
 			if (imagenFondo != null) {
-				// Tamaño
 				int ximage = 400;
 				int yimage = 400;
-
-				// Escalar la imagen
 				Image imagenEscalada = imagenFondo.getScaledInstance(ximage, yimage, Image.SCALE_SMOOTH);
 
-				// Convertir Graphics a Graphics2D para usar transparencia
 				Graphics2D g2d = (Graphics2D) g;
-
-				// Guardar la configuración original
 				Composite originalComposite = g2d.getComposite();
 
-				// Aplicar transparencia (0.0f = completamente transparente, 1.0f =
-				// completamente opaco)
 				float alpha = 0.2f; // Ajusta este valor para más o menos transparencia
 				g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
 
-				// Dibujar la imagen con transparencia
-				// Coordenadas
 				int x = 140; // Margen izquierdo
 				int y = 30; // Margen superior
 				g2d.drawImage(imagenEscalada, x, y, this);
 
-				// Restaurar la configuración original
 				g2d.setComposite(originalComposite);
 			}
 		}
@@ -145,37 +137,35 @@ public class VentanaRegistroUsuario extends JFrame {
 		 * Método que inicia el panel del registro del usuario.
 		 */
 		public void inicializarComponentes() {
-			botonVolver = new JButton("Volver");
-			botonVolver.setActionCommand("VOLVER_INICIO_REGISTRO");
-			botonVolver.setBounds(40, 400, 100, 30);
+			botonVolver = new JButton("Hacer otro pedido");
+			botonVolver.setActionCommand("VOLVER_RECIBO");
+			botonVolver.setBounds(40, 400, 140, 30);
 			add(botonVolver);
 
-			eNombre = new JLabel("Nombre de usuario: ");
-			eNombre.setBounds(90, 130, 200, 20);
-			eNombre.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
-			eNombre.setFont(new Font("Arial", Font.BOLD, 16)); // Cambiar fuente y tamaño
+			eNombre = new JLabel("Cliente: ");
+			eNombre.setBounds(200, 50, 200, 20);
+			eNombre.setForeground(Color.WHITE);
+			eNombre.setFont(new Font("Arial", Font.BOLD, 16));
 			add(eNombre);
 
-			campoNombre = new JTextField();
-			campoNombre.setBounds(250, 130, 200, 20);
-			add(campoNombre);
+			ePizzas = new JLabel("Porciones de pizza: ");
+			ePizzas.setBounds(105, 100, 200, 20);
+			ePizzas.setForeground(Color.WHITE);
+			ePizzas.setFont(new Font("Arial", Font.BOLD, 16));
+			add(ePizzas);
 
-			eContrasena = new JLabel("Contraseña: ");
-			eContrasena.setBounds(145, 250, 100, 20);
-			eContrasena.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
-			eContrasena.setFont(new Font("Arial", Font.BOLD, 16)); // Cambiar fuente y tamaño
-			add(eContrasena);
+			eTotalPagar = new JLabel("Total a pagar: ");
+			eTotalPagar.setBounds(160, 300, 120, 20);
+			eTotalPagar.setForeground(Color.WHITE);
+			eTotalPagar.setFont(new Font("Arial", Font.BOLD, 16));
+			add(eTotalPagar);
 
-			campoContrasena = new JTextField("");
-			campoContrasena.setBounds(250, 250, 200, 20);
-			add(campoContrasena);
-
-			botonRegistrarse = new JButton("REGISTRARME");
-			botonRegistrarse.setActionCommand("PANEL_REGISTRARME");
-			botonRegistrarse.setBounds(250, 350, 200, 30);
-			botonRegistrarse.setForeground(Color.black); // Cambiar el color del texto
-			botonRegistrarse.setFont(new Font("Arial", Font.BOLD, 20)); // Fuente, negrita, tamaño
-			add(botonRegistrarse);
+			botonCerrar = new JButton("CERRAR");
+			botonCerrar.setActionCommand("RECIBO_CERRAR");
+			botonCerrar.setBounds(250, 350, 200, 30);
+			botonCerrar.setForeground(Color.black);
+			botonCerrar.setFont(new Font("Arial", Font.BOLD, 20));
+			add(botonCerrar);
 		}
 
 		public Image getImagenFondo() {
@@ -186,12 +176,12 @@ public class VentanaRegistroUsuario extends JFrame {
 			this.imagenFondo = imagenFondo;
 		}
 
-		public JLabel geteContrasena() {
-			return eContrasena;
+		public JLabel geteTotalPagar() {
+			return eTotalPagar;
 		}
 
-		public void seteContrasena(JLabel eContrasena) {
-			this.eContrasena = eContrasena;
+		public void seteTotalPagar(JLabel eTotalPagar) {
+			this.eTotalPagar = eTotalPagar;
 		}
 
 		public JLabel geteNombre() {
@@ -202,28 +192,20 @@ public class VentanaRegistroUsuario extends JFrame {
 			this.eNombre = eNombre;
 		}
 
-		public JTextField getCampoNombre() {
-			return campoNombre;
+		public JLabel getePizzas() {
+			return ePizzas;
 		}
 
-		public void setCampoNombre(JTextField campoNombre) {
-			this.campoNombre = campoNombre;
+		public void setePizzas(JLabel ePizzas) {
+			this.ePizzas = ePizzas;
 		}
 
-		public JTextField getCampoContrasena() {
-			return campoContrasena;
+		public JButton getBotonCerrar() {
+			return botonCerrar;
 		}
 
-		public void setCampoContrasena(JTextField campoContrasena) {
-			this.campoContrasena = campoContrasena;
-		}
-
-		public JButton getBotonRegistrarse() {
-			return botonRegistrarse;
-		}
-
-		public void setBotonRegistrarse(JButton botonRegistrarse) {
-			this.botonRegistrarse = botonRegistrarse;
+		public void setBotonCerrar(JButton botonCerrar) {
+			this.botonCerrar = botonCerrar;
 		}
 
 		public JButton getBotonVolver() {
