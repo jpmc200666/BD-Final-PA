@@ -1,6 +1,8 @@
 package SQL;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 
 
@@ -39,6 +41,54 @@ public class Conexion {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+    public boolean validarConsulta(String usuario) {
+        try {
+            String validacionSql = "SELECT count(id) FROM sesiones WHERE usuario = ?";
+
+            PreparedStatement statement = conexion.prepareStatement(validacionSql);
+            statement.setString(1, usuario);
+            ResultSet rs = statement.executeQuery();
+            
+            if(rs.next()){
+                if(rs.getInt(1) == 0){
+                    return false;
+                }
+                else{
+                    return true;
+                }
+            }
+            else{
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true;
+        }
+    }
+    public boolean logIn(Usuarios usr) {
+        try {
+            String validacionSql = "SELECT id, usuario, contra FROM sesiones WHERE usuario = ?";
+
+            PreparedStatement statement = conexion.prepareStatement(validacionSql);
+            statement.setString(1, usr.getUsuario());
+            ResultSet rs = statement.executeQuery();
+            
+            if(rs.next()){
+                if(usr.getContra().equals(rs.getString(3))){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+            else{
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }

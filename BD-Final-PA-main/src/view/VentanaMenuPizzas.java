@@ -37,7 +37,11 @@ public class VentanaMenuPizzas extends JFrame {
 		add(panelMenuPizza);
 	}
 
-	class PanelMenuPizza extends JPanel {
+	public  PanelMenuPizza getPanelMenuPizza(){
+		return panelMenuPizza;
+	}
+
+	public class PanelMenuPizza extends JPanel {
 
 		private Image imagenFondo;
 		private JButton botonPizzaPepperoni;
@@ -181,52 +185,118 @@ public class VentanaMenuPizzas extends JFrame {
 			labelPizzaRanchera = crearImagen("resources/ranchera.jpg", 570, 300);
 			
 			// numero de porciones de pizza
-			JLabel nPepperoni = new JLabel("0");
+			nPepperoni = new JLabel("0");
 	        nPepperoni.setBounds(210, 60, 10, 10);
 	        nPepperoni.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
 	        add(nPepperoni);
 
-	        JLabel nVegetariana = new JLabel("0");
+	       	nVegetariana = new JLabel("0");
 	        nVegetariana.setBounds(210, 200, 10, 10);
 	        nVegetariana.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
 	        add(nVegetariana);
 
-	        JLabel nHawaiana = new JLabel("0");
+	        nHawaiana = new JLabel("0");
 	        nHawaiana.setBounds(210, 340, 10, 10);
 	        nHawaiana.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
 	        add(nHawaiana);
 
-	        JLabel nMexicana = new JLabel("0");
+	       	nMexicana = new JLabel("0");
 	        nMexicana.setBounds(470, 60, 10, 10);
 	        nMexicana.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
 	        add(nMexicana);
 
-	        JLabel nBBQ = new JLabel("0");
+	        nBBQ = new JLabel("0");
 	        nBBQ.setBounds(470, 200, 10, 10);
 	        nBBQ.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
 	        add(nBBQ);
 
-	        JLabel nCarnívora = new JLabel("0");
+	       	nCarnívora = new JLabel("0");
 	        nCarnívora.setBounds(470, 340, 10, 10);
 	        nCarnívora.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
 	        add(nCarnívora);
 
-	        JLabel nMariscos = new JLabel("0");
+	        nMariscos = new JLabel("0");
 	        nMariscos.setBounds(710, 60, 10, 10);
 	        nMariscos.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
 	        add(nMariscos);
 
-	        JLabel nNapolitana = new JLabel("0");
+	        nNapolitana = new JLabel("0");
 	        nNapolitana.setBounds(710, 200, 10, 10);
 	        nNapolitana.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
 	        add(nNapolitana);
 
-	        JLabel nRanchera = new JLabel("0");
+	        nRanchera = new JLabel("0");
 	        nRanchera.setBounds(710, 340, 10, 10);
 	        nRanchera.setForeground(Color.WHITE); // Cambiar el color del texto a blanco
 	        add(nRanchera);
-			
-			
+		}
+
+		public JLabel getNPepperoni(){
+			return nPepperoni;
+		}
+
+		public JLabel getNVegetariana(){
+			return nVegetariana;
+		}
+		public JLabel getNMexicana(){
+			return nMexicana;
+		}
+		public JLabel getNHawaiana(){
+			return nHawaiana;
+		}
+		public JLabel getNBBQ(){
+			return nBBQ;
+		}
+		public JLabel getNCarnivora(){
+			return nCarnívora;
+		}
+		public JLabel getNMariscos(){
+			return nMariscos;
+		}
+		public JLabel getNRanchera(){
+			return nRanchera;
+		}
+		public JLabel getNNapolitana(){
+			return nNapolitana;
+		}
+
+		public JButton getBotonPizzaPepperoni(){
+			return botonPizzaPepperoni;
+		}
+		public JButton getBotonPizzaVegetariana(){
+			return botonPizzaVegetariana;
+		}
+
+		public JButton getBotonPizzaHawaiana(){
+			return botonPizzaHawaiana;
+		}
+
+		public JButton getBotonPizzaMexicana(){
+			return botonPizzaMexicana;
+		}
+
+		public JButton getBotonPizzaBBQ(){
+			return botonPizzaBBQ;
+		}
+
+		public JButton getBotonPizzaCarnivora(){
+			return botonPizzaCarnívora;
+		}
+
+		public JButton getBotonPizzaMariscos(){
+			return botonPizzaMariscos;
+		}
+
+		public JButton getBotonPizzaNapolitana(){
+			return botonPizzaNapolitana;
+		}
+
+		public JButton getBotonPizzaRanchera(){
+			return botonPizzaRanchera;
+		}
+
+		public JButton getBotonTerminarPedido(){
+			return botonTerminarPedido;
 		}
 
 		private JLabel crearImagen(String rutaImagen, int x, int y) {
@@ -251,9 +321,5 @@ public class VentanaMenuPizzas extends JFrame {
 			}
 			return null;
 		}
-	}
-
-	public static void main(String[] args) {
-		new VentanaMenuPizzas(); // Mostrar la ventana al ejecutar
 	}
 }

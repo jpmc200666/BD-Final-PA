@@ -52,7 +52,7 @@ public class VentanaRecibo extends JFrame {
 	 * 
 	 * @return el panel de registro.
 	 */
-	public PanelRecibo getPanelRegister() {
+	public PanelRecibo getPanelRecibo() {
 		return panelRecibo;
 	}
 
@@ -68,7 +68,7 @@ public class VentanaRecibo extends JFrame {
 	/**
 	 * Clase interna que contiene el panel de registro de usuario.
 	 */
-	class PanelRecibo extends JPanel {
+	public class PanelRecibo extends JPanel {
 		private Image imagenFondo;
 		private JLabel eTotalPagar;
 		private JLabel eNombre;
@@ -149,13 +149,13 @@ public class VentanaRecibo extends JFrame {
 			add(eNombre);
 
 			ePizzas = new JLabel("Porciones de pizza: ");
-			ePizzas.setBounds(105, 100, 200, 20);
+			ePizzas.setBounds(105, 100, 1200, 200);
 			ePizzas.setForeground(Color.WHITE);
 			ePizzas.setFont(new Font("Arial", Font.BOLD, 16));
 			add(ePizzas);
 
 			eTotalPagar = new JLabel("Total a pagar: ");
-			eTotalPagar.setBounds(160, 300, 120, 20);
+			eTotalPagar.setBounds(160, 300, 1200, 20);
 			eTotalPagar.setForeground(Color.WHITE);
 			eTotalPagar.setFont(new Font("Arial", Font.BOLD, 16));
 			add(eTotalPagar);

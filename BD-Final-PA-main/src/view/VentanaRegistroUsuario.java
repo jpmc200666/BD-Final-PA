@@ -69,7 +69,7 @@ public class VentanaRegistroUsuario extends JFrame {
 	/**
 	 * Clase interna que contiene el panel de registro de usuario.
 	 */
-	class PanelRegistroUsuario extends JPanel {
+	public class PanelRegistroUsuario extends JPanel {
 		private Image imagenFondo;
 		private JLabel eContrasena;
 		private JLabel eNombre;

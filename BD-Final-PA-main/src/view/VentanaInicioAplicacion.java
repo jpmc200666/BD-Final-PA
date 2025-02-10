@@ -52,7 +52,7 @@ public class VentanaInicioAplicacion extends JFrame {
 	/**
 	 * Clase interna que contiene el panel de inicio de sesión.
 	 */
-	class PanelInicioAplicacion extends JPanel {
+	public class PanelInicioAplicacion extends JPanel {
 		private Image imagenFondo;
 		private JButton botonIniciarSesion;
 		private JButton botonRegistrar;
