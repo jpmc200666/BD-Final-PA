@@ -30,7 +30,7 @@ public class Control implements ActionListener{
         ventanaInicial.setVisible(true);
 		ventanaInicioSesion.setVisible (false);
 		ventanaRegistroUsuario.setVisible(false);
-        ventanaMenuPizzas.setVisible(false);
+        ventanaMenuPizzas.setVisible(false);;
     }
     
     public void crearUsuario(String usuario, String contra) {

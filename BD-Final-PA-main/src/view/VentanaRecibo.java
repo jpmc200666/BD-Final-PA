@@ -15,18 +15,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
-/**
- * Clase que contiene la ventana de registro de usuario.
- * 
- * @author Grupo JAN
- */
 public class VentanaRecibo extends JFrame {
 	private PanelRecibo panelRecibo;
 
-	/**
-	 * Constructor con los parámetros de la ventana de registro de usuario.
-	 */
 	public VentanaRecibo() {
 		setTitle("Recibo");
 		setSize(700, 500);
@@ -39,35 +33,19 @@ public class VentanaRecibo extends JFrame {
 		setVisible(false);
 	}
 
-	/**
-	 * Método que inicia la ventana de registro de usuario.
-	 */
 	public void inicializarComponentes() {
 		panelRecibo = new PanelRecibo();
 		add(panelRecibo);
 	}
 
-	/**
-	 * Obtener el panel de registro.
-	 * 
-	 * @return el panel de registro.
-	 */
 	public PanelRecibo getPanelRecibo() {
 		return panelRecibo;
 	}
 
-	/**
-	 * Definir el panel de registro.
-	 * 
-	 * @param panelRecibo el panel de registro a definir.
-	 */
 	public void setPanelRecibo(PanelRecibo panelRecibo) {
 		this.panelRecibo = panelRecibo;
 	}
 
-	/**
-	 * Clase interna que contiene el panel de registro de usuario.
-	 */
 	public class PanelRecibo extends JPanel {
 		private Image imagenFondo;
 		private JLabel eTotalPagar;
@@ -75,10 +53,8 @@ public class VentanaRecibo extends JFrame {
 		private JLabel ePizzas;
 		private JButton botonCerrar;
 		private JButton botonVolver;
+		private JTextArea listaPizzas;
 
-		/**
-		 * Constructor del panel de registro de usuario.
-		 */
 		public PanelRecibo() {
 			setLayout(null);
 			cargarImagenFondo();
@@ -86,9 +62,6 @@ public class VentanaRecibo extends JFrame {
 			setVisible(true);
 		}
 
-		/**
-		 * Método para cargar la imagen de fondo.
-		 */
 		private void cargarImagenFondo() {
 			try {
 				InputStream is = getClass().getClassLoader().getResourceAsStream("resources/imagenCuadradaAzul.jpg");
@@ -102,10 +75,6 @@ public class VentanaRecibo extends JFrame {
 			}
 		}
 
-		/**
-		 * Método que permite cambiar el fondo del panel.
-		 */
-		@Override
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);
 
@@ -133,9 +102,6 @@ public class VentanaRecibo extends JFrame {
 			}
 		}
 
-		/**
-		 * Método que inicia el panel del registro del usuario.
-		 */
 		public void inicializarComponentes() {
 			botonVolver = new JButton("Hacer otro pedido");
 			botonVolver.setActionCommand("VOLVER_RECIBO");
@@ -149,10 +115,26 @@ public class VentanaRecibo extends JFrame {
 			add(eNombre);
 
 			ePizzas = new JLabel("Porciones de pizza: ");
-			ePizzas.setBounds(105, 100, 1200, 200);
+			ePizzas.setBounds(105, 60, 200, 100);
 			ePizzas.setForeground(Color.WHITE);
 			ePizzas.setFont(new Font("Arial", Font.BOLD, 16));
 			add(ePizzas);
+
+			JTextArea listaPizzas = new JTextArea(
+		            "    Pepperoni = \n" +
+		                    "    Hawaiana = \n" +
+		                    "    Mexicana = \n" +
+		                    "    Ranchera = \n" +
+		                    "     Mariscos = \n" +
+		                    "             BBQ = \n" +
+		                    "  Napolitana = \n" +
+		                    "Vegetariana = \n" +
+		                    "    Carnivora = "
+		                );
+			listaPizzas.setEditable(false);
+			listaPizzas.setBounds(280, 105, 200, 160);
+			listaPizzas.setFont(new Font("Arial", Font.BOLD, 14));
+			add(listaPizzas);
 
 			eTotalPagar = new JLabel("Total a pagar: ");
 			eTotalPagar.setBounds(160, 300, 1200, 20);
@@ -214,6 +196,14 @@ public class VentanaRecibo extends JFrame {
 
 		public void setBotonVolver(JButton botonVolver) {
 			this.botonVolver = botonVolver;
+		}
+
+		public JTextArea getListaPizzas() {
+			return listaPizzas;
+		}
+
+		public void setListaPizzas(JTextArea listaPizzas) {
+			this.listaPizzas = listaPizzas;
 		}
 
 	}
