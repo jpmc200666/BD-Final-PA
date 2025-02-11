@@ -2,10 +2,7 @@ package SQL;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.ResultSet;
-
 import javax.swing.JOptionPane;
-
 import view.VentanaInicioAplicacion;
 import view.VentanaInicioSesion;
 import view.VentanaMenuPizzas;
@@ -21,6 +18,15 @@ public class Control implements ActionListener{
     private VentanaMenuPizzas ventanaMenuPizzas = new VentanaMenuPizzas();
     private VentanaRecibo ventanaRecibo = new VentanaRecibo();
     String usuario;
+    int nPepperoni;
+    int nVegetariana;
+    int nHawaiana;
+    int nBBQ;
+    int nMexicana;
+    int nMariscos;
+    int nNapolitana;
+    int nRanchera;
+    int nCarnivora;
 
     public Control (Conexion conexionsql){
         this.mySQL = conexionsql;
@@ -59,7 +65,7 @@ public class Control implements ActionListener{
         this.ventanaMenuPizzas.getPanelMenuPizza().getBotonPizzaPepperoni().addActionListener(this);
         this.ventanaMenuPizzas.getPanelMenuPizza().getBotonTerminarPedido().addActionListener(this);
         this.ventanaRecibo.getPanelRecibo().getBotonVolver().addActionListener(this);
-        this.ventanaRecibo.getPanelRecibo().getBotonVolver().addActionListener(this);
+        this.ventanaRecibo.getPanelRecibo().getBotonCerrar().addActionListener(this);
     }
 
     @Override
@@ -164,39 +170,42 @@ public class Control implements ActionListener{
             this.ventanaMenuPizzas.getPanelMenuPizza().getNRanchera().setText(Integer.toString(updateCantPedido));
         }
         if(comando.equals("terminar_pedido")){
-            int nPepperoni = Integer.parseInt(this.ventanaMenuPizzas.getPanelMenuPizza().getNPepperoni().getText());
-            int nVegetariana = Integer.parseInt(this.ventanaMenuPizzas.getPanelMenuPizza().getNVegetariana().getText());
-            int nMexicana = Integer.parseInt(this.ventanaMenuPizzas.getPanelMenuPizza().getNMexicana().getText());
-            int nBBQ = Integer.parseInt(this.ventanaMenuPizzas.getPanelMenuPizza().getNBBQ().getText());
-            int nMariscos = Integer.parseInt(this.ventanaMenuPizzas.getPanelMenuPizza().getNMariscos().getText());
-            int nRanchera = Integer.parseInt(this.ventanaMenuPizzas.getPanelMenuPizza().getNRanchera().getText());
-            int nCarnivora = Integer.parseInt(this.ventanaMenuPizzas.getPanelMenuPizza().getNCarnivora().getText());
-            int nHawaina = Integer.parseInt(this.ventanaMenuPizzas.getPanelMenuPizza().getNHawaiana().getText());
-            int nNapolitana = Integer.parseInt(this.ventanaMenuPizzas.getPanelMenuPizza().getNNapolitana().getText());
-            Pedido pedido = new Pedido(nPepperoni, nVegetariana, nHawaina, nCarnivora, nMexicana, nMariscos, nRanchera, nNapolitana, nBBQ);
+            this.nPepperoni = Integer.parseInt(this.ventanaMenuPizzas.getPanelMenuPizza().getNPepperoni().getText());
+            this.nVegetariana = Integer.parseInt(this.ventanaMenuPizzas.getPanelMenuPizza().getNVegetariana().getText());
+            this.nMexicana = Integer.parseInt(this.ventanaMenuPizzas.getPanelMenuPizza().getNMexicana().getText());
+            this.nBBQ = Integer.parseInt(this.ventanaMenuPizzas.getPanelMenuPizza().getNBBQ().getText());
+            this.nMariscos = Integer.parseInt(this.ventanaMenuPizzas.getPanelMenuPizza().getNMariscos().getText());
+            this.nRanchera = Integer.parseInt(this.ventanaMenuPizzas.getPanelMenuPizza().getNRanchera().getText());
+            this.nCarnivora = Integer.parseInt(this.ventanaMenuPizzas.getPanelMenuPizza().getNCarnivora().getText());
+            this.nHawaiana = Integer.parseInt(this.ventanaMenuPizzas.getPanelMenuPizza().getNHawaiana().getText());
+            this.nNapolitana = Integer.parseInt(this.ventanaMenuPizzas.getPanelMenuPizza().getNNapolitana().getText());
+            Pedido pedido = new Pedido(nPepperoni, nVegetariana, nHawaiana, nCarnivora, nMexicana, nMariscos, nRanchera, nNapolitana, nBBQ);
             int cuenta = pedido.cuenta();
             if(cuenta > 0){
                 this.ventanaMenuPizzas.setVisible(false);
                 this.ventanaRecibo.setVisible(true);
                 this.ventanaRecibo.getPanelRecibo().geteNombre().setText("Cliente: " + usuario);
                 this.ventanaRecibo.getPanelRecibo().geteTotalPagar().setText("Total a pagar: " + cuenta);
-                this.ventanaRecibo.getPanelRecibo().getePizzas().setText(
-                "Porciones de pizza: Pepperoni = " + pedido.getnPepperoni() + "\n"+
-                "                    Hawaiana =" + pedido.getnHawaiana()+"\n"+
-                "                    Mexicana = " + pedido.getnMexicana()+"\n"+
-                "                    Ranchera = " + pedido.getnRanchera()+"\n"+
-                "                    Mariscos = " + pedido.getnMariscos()+"\n"+
-                "                    BBQ = " + pedido.getnBBQ()+"\n"+
-                "                    Napolitana= " + pedido.getnNapolitana()+"\n"+
-                "                    Vegetariana = " + pedido.getnVegetariana()+"\n"+
-                "                    Carnivora = " + pedido.getnCarnívora());
+                this.ventanaRecibo.getPanelRecibo().getListaPizzas().setText(
+                    "Pepperoni = " + nPepperoni + "\n" +
+                    "Hawaiana = " + nHawaiana + "\n" +
+                    "Mexicana = " + nMexicana + "\n" +
+                    "Ranchera = " + nRanchera + "\n" +
+                    "Mariscos = " + nMariscos + "\n" +
+                    "BBQ = " + nBBQ + "\n" +
+                    "Napolitana = " + nNapolitana + "\n" +
+                    "Vegetariana = " + nVegetariana + "\n" +
+                    "Carnivora = "+ nCarnivora);
             }else{
                 JOptionPane.showMessageDialog(null, "Seleccione una opcion por favor");
             }
         }
         if(comando.equals("VOLVER_RECIBO")){
             this.ventanaMenuPizzas.setVisible(true);
-                this.ventanaRecibo.setVisible(false);
+            this.ventanaRecibo.setVisible(false);
+        }
+        if(comando.equals("RECIBO_CERRAR")){
+            this.ventanaRecibo.setVisible(false);
         }
     }
 }

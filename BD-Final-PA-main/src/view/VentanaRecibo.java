@@ -16,7 +16,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 public class VentanaRecibo extends JFrame {
 	private PanelRecibo panelRecibo;
@@ -120,7 +119,7 @@ public class VentanaRecibo extends JFrame {
 			ePizzas.setFont(new Font("Arial", Font.BOLD, 16));
 			add(ePizzas);
 
-			JTextArea listaPizzas = new JTextArea(
+			listaPizzas = new JTextArea(
 		            "    Pepperoni = \n" +
 		                    "    Hawaiana = \n" +
 		                    "    Mexicana = \n" +
